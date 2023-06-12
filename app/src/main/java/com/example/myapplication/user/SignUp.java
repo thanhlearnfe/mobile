@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.myapplication.MainActivity;
+import com.example.myapplication.R;
 
 public class SignUp extends AppCompatActivity {
     private Button btnLogin,btnSignup,btnHome;
@@ -37,7 +40,7 @@ public class SignUp extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUp.this,MainActivity.class);
+                Intent intent = new Intent(SignUp.this, MainActivity.class);
                 startActivity(intent);
             }
         });

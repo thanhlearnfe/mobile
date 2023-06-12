@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.user;
 
 public class Users {
     private String email;

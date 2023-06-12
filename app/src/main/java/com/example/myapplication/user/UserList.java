@@ -1,9 +1,4 @@
-package com.example.myapplication;
-
-import android.service.autofill.UserData;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
+package com.example.myapplication.user;
 
 import java.util.ArrayList;
 

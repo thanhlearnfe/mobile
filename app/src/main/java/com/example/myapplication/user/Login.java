@@ -1,16 +1,17 @@
-    package com.example.myapplication;
+    package com.example.myapplication.user;
 
     import androidx.appcompat.app.AppCompatActivity;
-    import androidx.constraintlayout.widget.ConstraintLayout;
 
     import android.annotation.SuppressLint;
     import android.content.Intent;
     import android.os.Bundle;
-    import android.util.Log;
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
     import android.widget.Toast;
+
+    import com.example.myapplication.MainActivity;
+    import com.example.myapplication.R;
 
     public class Login extends AppCompatActivity {
         private Button btnLogin,btnSignup,login;
