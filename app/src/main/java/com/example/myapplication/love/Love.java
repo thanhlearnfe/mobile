@@ -18,8 +18,8 @@ public class Love extends Film {
         return super.getName();
     }
 
-    public static void setLoveData(ArrayList<Film> loveData) {
-        Love.loveData= loveData;
+    public static ArrayList<Film> getLoveData() {
+        return loveData;
     }
     public static void addFilm(Film u){
         loveData.add(u);

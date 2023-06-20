@@ -5,17 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.filmlist.Film;
 
 import java.util.ArrayList;
 
 public class LoveAdapter extends BaseAdapter {
     private Context context;
-    private ArrayList<Love> arrayList;
+    private ArrayList<Film> arrayList;
     private TextView serialNum, name, contactNum;
-    public LoveAdapter(Context context, ArrayList<Love> arrayList) {
+    private ImageView img;
+    public LoveAdapter(Context context, ArrayList<Film> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
@@ -38,6 +41,9 @@ public class LoveAdapter extends BaseAdapter {
         serialNum = convertView.findViewById(R.id.serailNumber);
         serialNum.setText(" " + arrayList.get(position).getName());
 
+        img = convertView.findViewById(R.id.img);
+        System.out.println(arrayList.get(position).getResourceImage());
+        img.setImageResource(arrayList.get(position).getResourceImage());
         return convertView;
     }
 }

@@ -50,14 +50,15 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         holder.ivAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addButtonClick(view,film);
+                addButtonClick(view,film,film.getName());
             }
         });
     }
-    private void addButtonClick(View view,Film p) {
-        Toast toast = Toast.makeText(mContext.getApplicationContext(),"Đã thêm vào danh sách yêu thích !", Toast.LENGTH_SHORT);
+    private void addButtonClick(View view,Film p,String t) {
+        Toast toast = Toast.makeText(mContext.getApplicationContext(),"wef"+t, Toast.LENGTH_SHORT);
         toast.show();
         Love.addFilm(p);
+//        Love.setLoveData();
     }
     @Override
     public int getItemCount() {
@@ -66,6 +67,8 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         }
         return 0;
     }
+
+
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
         private ImageView imgUser;
@@ -77,7 +80,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
 
             imgUser = itemView.findViewById(R.id.img_user);
             tvName = itemView.findViewById(R.id.tvname);
-            this.ivAdd = (ImageView)itemView.findViewById(R.id.addFilm);
+            this.ivAdd = (ImageView)itemView.findViewById(R.id.img_user);
         }
     }
 }
