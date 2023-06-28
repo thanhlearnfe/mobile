@@ -29,9 +29,11 @@ public class Home extends AppCompatActivity {
 
     private RecyclerView rcvUser;
     private FilmAdapter mUserAdapter;
-    private ImageView addFilm,detailFilm,yeuThich,search;
+    private ImageView addFilm,detailFilm,yeuThich,search,news;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Film> list = new ArrayList<>();
+    ArrayList<Film> listLove = new ArrayList<>();
+
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class Home extends AppCompatActivity {
         detailFilm = (ImageView) findViewById(R.id.img_user);
         yeuThich = (ImageView) findViewById(R.id.yeuthich);
         search = (ImageView) findViewById(R.id.search);
+        news = (ImageView) findViewById(R.id.imageView10);
+
         yeuThich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +63,14 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, NewsActivity.class);
+                startActivity(intent);
+
+            }
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +109,14 @@ public class Home extends AppCompatActivity {
                                 list.add(user);
                             }
                             mUserAdapter.setData(list);
+                            mUserAdapter.setLove(LoveActivity.getData());
                         }else{
                             Toast.makeText(getApplicationContext(), "Data gagal di ambil!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
-        return null;
+        return list;
     }
     private List<Film> getListUser(){
 

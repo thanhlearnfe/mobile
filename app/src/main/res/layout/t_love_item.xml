@@ -16,5 +16,5 @@
         android:id="@+id/img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/google"></ImageView>
+        android:src="@drawable/tym"></ImageView>
 </LinearLayout>
