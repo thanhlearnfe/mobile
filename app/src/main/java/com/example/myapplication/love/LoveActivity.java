@@ -22,10 +22,10 @@ import java.util.List;
 public class LoveActivity extends AppCompatActivity {
     ListView listView;
 
-    ArrayList<Film> loveData = Love.getLoveData();
+    static ArrayList<Film> loveData = Love.getLoveData();
 
-    LoveAdapter adapter;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    static LoveAdapter adapter;
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +40,10 @@ public class LoveActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        getData();
+        setData();
     }
-    private ArrayList<Film> getData(){
+
+    public static ArrayList<Film> setData(){
         db.collection("love")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -53,18 +54,34 @@ public class LoveActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
                                 Film love = new Film(1, document.getString("resourceImage"),document.getString("name"));
-                                    // Nếu chưa tồn tại, thêm giá trị vào danh sách
                                 loveData.add(love);
                             }
                             adapter.setData(loveData);
-
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Data gagal di ambil!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
         return null;
+    }
+
+    public static ArrayList<Film> getData(){
+        db.collection("love")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        loveData.clear();
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"));
+                                loveData.add(love);
+                            }
+                        }
+                    }
+                });
+
+        return loveData;
     }
     private ArrayList<Film> getListUser(){
         Film user = new Film(1, "https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7", "User1");
@@ -72,7 +89,6 @@ public class LoveActivity extends AppCompatActivity {
             // Nếu chưa tồn tại, thêm giá trị vào danh sách
             loveData.add(user);
         }
-
         return loveData;
     }
 }

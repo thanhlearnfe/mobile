@@ -1,6 +1,8 @@
 package com.example.myapplication.filmlist;
 
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.Love;
+import com.example.myapplication.love.LoveActivity;
+import com.example.myapplication.love.LoveData;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolder>{
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private Context mContext;
     private List<Film> mListFilm;
-
+    ArrayList<Film> loveData = Love.getLoveData();
     public FilmAdapter(Context mContext) {
         this.mContext = mContext;
     }
@@ -58,7 +68,25 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
     private void addButtonClick(View view,Film p,String t) {
         Toast toast = Toast.makeText(mContext.getApplicationContext(),"wef"+t, Toast.LENGTH_SHORT);
         toast.show();
-        Love.addFilm(p);
+        loveData = LoveActivity.getData();
+        if (!loveData.contains(p)) {
+
+            // Nếu chưa tồn tại, thêm giá trị vào danh sách
+            db.collection("love")
+                    .add(p)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(mContext.getApplicationContext(), "Berhasil!", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(mContext.getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
     @Override
     public int getItemCount() {
