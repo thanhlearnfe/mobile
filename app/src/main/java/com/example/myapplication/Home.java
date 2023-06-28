@@ -1,13 +1,14 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -15,8 +16,11 @@ import android.widget.Toast;
 import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
-import com.example.myapplication.user.Login;
-import com.example.myapplication.user.SignUp;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,8 @@ public class Home extends AppCompatActivity {
     private RecyclerView rcvUser;
     private FilmAdapter mUserAdapter;
     private ImageView addFilm,detailFilm,yeuThich,search;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    List<Film> list = new ArrayList<>();
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +44,7 @@ public class Home extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         rcvUser.setLayoutManager(gridLayoutManager);
 
-        mUserAdapter.setData(getListUser());
         rcvUser.setAdapter(mUserAdapter);
-
-
 
         addFilm = (ImageView) findViewById(R.id.imageView4);
         detailFilm = (ImageView) findViewById(R.id.img_user);
@@ -75,17 +78,42 @@ public class Home extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getData();
+    }
+    private List<Film> getData(){
+        db.collection("listFilm")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @SuppressLint("NotifyDataSetChanged")
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        list.clear();
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                Film user = new Film(1, document.getString("resourceImage"),document.getString("name"));
+                                list.add(user);
+                            }
+                            mUserAdapter.setData(list);
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Data gagal di ambil!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
+        return null;
+    }
     private List<Film> getListUser(){
-        List<Film> list = new ArrayList<>();
 
-        list.add(new Film(1,R.drawable.t_img1,"User1"));
-        list.add(new Film(2,R.drawable.t_img2,"User2"));
-        list.add(new Film(3,R.drawable.t_img3,"User3"));
-        list.add(new Film(4,R.drawable.t_img4,"User4"));
-        list.add(new Film(5,R.drawable.t_img5,"User5"));
-        list.add(new Film(6,R.drawable.t_img6,"User6"));
-        list.add(new Film(7,R.drawable.t_img7,"User7"));
+
+        list.add(new Film(1,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User1"));
+        list.add(new Film(2,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User2"));
+        list.add(new Film(3,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User3"));
+        list.add(new Film(4,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User4"));
+        list.add(new Film(5,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User5"));
+
         return list;
     }
 }

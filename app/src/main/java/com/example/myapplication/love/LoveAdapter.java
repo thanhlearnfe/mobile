@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.filmlist.Film;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoveAdapter extends BaseAdapter {
     private Context context;
@@ -21,6 +23,10 @@ public class LoveAdapter extends BaseAdapter {
     public LoveAdapter(Context context, ArrayList<Film> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+    }
+    public void setData(ArrayList<Film> list){
+        this.arrayList = list;
+        notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -43,7 +49,9 @@ public class LoveAdapter extends BaseAdapter {
 
         img = convertView.findViewById(R.id.img);
         System.out.println(arrayList.get(position).getResourceImage());
-        img.setImageResource(arrayList.get(position).getResourceImage());
+        Picasso.get().load(arrayList.get(position).getResourceImage()).into(img);
+
+
         return convertView;
     }
 }

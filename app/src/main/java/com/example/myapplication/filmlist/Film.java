@@ -1,11 +1,13 @@
 package com.example.myapplication.filmlist;
 
+import java.util.Objects;
+
 public class Film {
     public int id;
-    public int resourceImage;
+    public String resourceImage;
     public String name;
 
-    public Film(int id, int resourceImage, String name) {
+    public Film(int id, String resourceImage, String name) {
         this.id = id;
         this.resourceImage = resourceImage;
         this.name = name;
@@ -18,11 +20,11 @@ public class Film {
         this.id = id;
     }
 
-    public int getResourceImage() {
+    public String getResourceImage() {
         return resourceImage;
     }
 
-    public void setResourceImage(int resourceImage) {
+    public void setResourceImage(String resourceImage) {
         this.resourceImage = resourceImage;
     }
 
@@ -34,5 +36,16 @@ public class Film {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Film)) return false;
+        Film film = (Film) o;
+        return getId() == film.getId() && getResourceImage().equals(film.getResourceImage()) && getName().equals(film.getName());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getResourceImage(), getName());
+    }
 }

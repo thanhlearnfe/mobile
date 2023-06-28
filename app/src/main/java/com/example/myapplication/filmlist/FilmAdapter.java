@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.Love;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
             return;
         }
 
-        holder.imgUser.setImageResource(film.getResourceImage());
+        Picasso.get().load(film.getResourceImage()).into(holder.imgUser);
         holder.tvName.setText(film.getName());
 
         holder.ivAdd.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +59,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         Toast toast = Toast.makeText(mContext.getApplicationContext(),"wef"+t, Toast.LENGTH_SHORT);
         toast.show();
         Love.addFilm(p);
-//        Love.setLoveData();
     }
     @Override
     public int getItemCount() {
@@ -67,7 +67,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         }
         return 0;
     }
-
 
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
