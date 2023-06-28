@@ -25,7 +25,7 @@ public class Home extends AppCompatActivity {
 
     private RecyclerView rcvUser;
     private FilmAdapter mUserAdapter;
-    private ImageView addFilm,detailFilm,yeuThich;
+    private ImageView addFilm,detailFilm,yeuThich,search;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +46,20 @@ public class Home extends AppCompatActivity {
         addFilm = (ImageView) findViewById(R.id.imageView4);
         detailFilm = (ImageView) findViewById(R.id.img_user);
         yeuThich = (ImageView) findViewById(R.id.yeuthich);
+        search = (ImageView) findViewById(R.id.search);
         yeuThich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, LoveActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, Search.class);
                 startActivity(intent);
 
             }
