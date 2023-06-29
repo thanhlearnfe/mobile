@@ -70,12 +70,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, ShortActivity.class);
                 startActivity(intent);
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, NewsActivity.class);
-                startActivity(intent);
-
             }
         });
 
