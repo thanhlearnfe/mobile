@@ -33,13 +33,18 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
     private Context mContext;
     private List<Film> mListFilm;
     ArrayList<Film> loveData = Love.getLoveData();
+//    public FilmAdapter(Context mContext) {
+//        this.mContext = mContext;
+//    }
     public FilmAdapter(Context mContext) {
         this.mContext = mContext;
     }
-
     public void setData(List<Film> list){
         this.mListFilm = list;
         notifyDataSetChanged();
+    }
+    public void setLove(ArrayList<Film> list){
+        loveData = list;
     }
     @NonNull
     @Override
@@ -66,18 +71,15 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         });
     }
     private void addButtonClick(View view,Film p,String t) {
-        Toast toast = Toast.makeText(mContext.getApplicationContext(),"wef"+t, Toast.LENGTH_SHORT);
-        toast.show();
-        loveData = LoveActivity.getData();
-        if (!loveData.contains(p)) {
 
+        if (!loveData.contains(p)) {
             // Nếu chưa tồn tại, thêm giá trị vào danh sách
             db.collection("love")
                     .add(p)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(mContext.getApplicationContext(), "Berhasil!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext.getApplicationContext(), "Đã thêm phim vào danh sách phim yêu thích!", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -86,6 +88,8 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
                             Toast.makeText(mContext.getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+        }else {
+            Toast.makeText(mContext.getApplicationContext(), "Bạn đã thêm phim này vào mục ưu thích!", Toast.LENGTH_SHORT).show();
         }
     }
     @Override
@@ -107,7 +111,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
 
             imgUser = itemView.findViewById(R.id.img_user);
             tvName = itemView.findViewById(R.id.tvname);
-            this.ivAdd = (ImageView)itemView.findViewById(R.id.img_user);
+            this.ivAdd = (ImageView)itemView.findViewById(R.id.addFilm);
         }
     }
 }
