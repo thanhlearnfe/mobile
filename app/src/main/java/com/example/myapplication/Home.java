@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
+import com.example.myapplication.shorts.ShortActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,7 +30,8 @@ public class Home extends AppCompatActivity {
 
     private RecyclerView rcvUser;
     private FilmAdapter mUserAdapter;
-    private ImageView addFilm,detailFilm,yeuThich,search,news;
+    private ImageView addFilm,detailFilm,yeuThich,search, shorts;
+
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<Film> list = new ArrayList<>();
     ArrayList<Film> listLove = new ArrayList<>();
@@ -52,7 +54,8 @@ public class Home extends AppCompatActivity {
         detailFilm = (ImageView) findViewById(R.id.img_user);
         yeuThich = (ImageView) findViewById(R.id.yeuthich);
         search = (ImageView) findViewById(R.id.search);
-        news = (ImageView) findViewById(R.id.imageView10);
+        shorts = (ImageView) findViewById(R.id.imageView10);
+
 
         yeuThich.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,19 +65,15 @@ public class Home extends AppCompatActivity {
 
             }
         });
-
+        shorts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, ShortActivity.class);
+                startActivity(intent);
         news.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home.this, NewsActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Search.class);
                 startActivity(intent);
 
             }
