@@ -19,7 +19,7 @@
             android:name=".Search"
             android:exported="false" />
         <activity
-            android:name=".VideoActivity"
+            android:name=".video.VideoActivity"
             android:exported="false" />
         <activity
             android:name=".love.LoveActivity"
@@ -32,9 +32,6 @@
             android:exported="false" />
         <activity
             android:name=".user.Login"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

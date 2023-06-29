@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
+import com.example.myapplication.video.VideoActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
