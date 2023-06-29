@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
+import com.example.myapplication.video.VideoActivity;
 import com.example.myapplication.shorts.ShortActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -98,7 +99,7 @@ public class Home extends AppCompatActivity {
                         list.clear();
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                Film user = new Film(1, document.getString("resourceImage"),document.getString("name"));
+                                Film user = new Film(1, document.getString("resourceImage"),document.getString("name"), document.getString("resourceVideo"));
                                 list.add(user);
                             }
                             mUserAdapter.setData(list);
@@ -111,15 +112,15 @@ public class Home extends AppCompatActivity {
 
         return list;
     }
-    private List<Film> getListUser(){
-
-
-        list.add(new Film(1,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User1"));
-        list.add(new Film(2,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User2"));
-        list.add(new Film(3,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User3"));
-        list.add(new Film(4,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User4"));
-        list.add(new Film(5,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User5"));
-
-        return list;
-    }
+//    private List<Film> getListUser(){
+//
+//
+//        list.add(new Film(1,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User1"));
+//        list.add(new Film(2,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User2"));
+//        list.add(new Film(3,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User3"));
+//        list.add(new Film(4,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User4"));
+//        list.add(new Film(5,"https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7","User5"));
+//
+//        return list;
+//    }
 }

@@ -29,30 +29,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView4"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
+                android:paddingBottom="80dp"
                 android:layout_marginTop="10dp"/>
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="413dp"
-                android:layout_height="547dp"
+                android:layout_width="408dp"
+                android:layout_height="494dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/bgr"
+                android:src="@drawable/avt2"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="-4dp" />
 
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="306dp"
-                android:layout_height="61dp"
-                android:layout_marginBottom="36dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@mipmap/btnplay"
-                tools:ignore="MissingConstraints" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imageView6"-->
+<!--                android:layout_width="306dp"-->
+<!--                android:layout_height="61dp"-->
+<!--                android:layout_marginBottom="36dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/imageView4"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.495"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:srcCompat="@mipmap/btnplay"-->
+<!--                tools:ignore="MissingConstraints" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
