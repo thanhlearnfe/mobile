@@ -12,8 +12,8 @@ import java.util.Objects;
 public class Love extends Film {
     private static ArrayList<Film> loveData = new ArrayList<>();
 
-    public Love(int id, String resourceImage, String name) {
-        super(id, resourceImage, name);
+    public Love(int id, String resourceImage, String name,String resourceVideo) {
+        super(id, resourceImage, name,resourceVideo);
     }
 
     @Override

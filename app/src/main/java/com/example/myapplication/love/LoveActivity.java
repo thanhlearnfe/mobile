@@ -53,7 +53,7 @@ public class LoveActivity extends AppCompatActivity {
                         loveData.clear();
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"));
+                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"), document.getString("resourceVideo"));
                                 loveData.add(love);
                             }
                             adapter.setData(loveData);
@@ -74,7 +74,7 @@ public class LoveActivity extends AppCompatActivity {
                         loveData.clear();
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"));
+                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"), document.getString("resourceVideo"));
                                 loveData.add(love);
                             }
                         }
@@ -84,7 +84,7 @@ public class LoveActivity extends AppCompatActivity {
         return loveData;
     }
     private ArrayList<Film> getListUser(){
-        Film user = new Film(1, "https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7", "User1");
+        Film user = new Film(1, "https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/2022-03-01%20(1).png?alt=media&token=d49c560e-624f-4145-82eb-a482833137d7", "User1","https://firebasestorage.googleapis.com/v0/b/netflix-73cc1.appspot.com/o/film2.mp4?alt=media&token=7fcf16c1-c5fb-42f1-af53-4ef85dc6b258");
         if (!loveData.contains(user)) {
             // Nếu chưa tồn tại, thêm giá trị vào danh sách
             loveData.add(user);
