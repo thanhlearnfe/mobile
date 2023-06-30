@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.love.LoveActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
