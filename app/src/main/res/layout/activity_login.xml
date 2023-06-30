@@ -9,7 +9,7 @@
     android:background="@drawable/login"
         tools:context=".MainActivity" >
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/login"
         app:layout_constraintVertical_bias="0.053" />
 
     <ImageView
@@ -134,7 +134,7 @@
 
     <EditText
         android:hint="xuanthanhvdk@gmail.con"
-        android:id="@+id/loginvalue"
+        android:id="@+id/loginvalu"
         android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:clickable="true"
@@ -151,7 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.709"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toEndOf="@+id/login"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.427" />
 
@@ -164,10 +164,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Email"
-        app:layout_constraintBottom_toTopOf="@+id/loginvalue"
+        app:layout_constraintBottom_toTopOf="@+id/loginvalu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
-        app:layout_constraintStart_toEndOf="@+id/btnLogin"
+        app:layout_constraintStart_toEndOf="@+id/login"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -184,12 +184,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toEndOf="@+id/btnSignup"
-        app:layout_constraintTop_toBottomOf="@+id/loginvalue"
+        app:layout_constraintTop_toBottomOf="@+id/loginvalu"
         app:layout_constraintVertical_bias="0.094" />
 
     <EditText
         android:hint="******"
-        android:id="@+id/pass"
+        android:id="@+id/pas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -220,11 +220,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/pas"
         app:layout_constraintVertical_bias="0.152" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/logi"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
