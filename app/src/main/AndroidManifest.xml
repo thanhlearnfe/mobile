@@ -13,9 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <activity
-            android:name=".Search"
-            android:exported="false" />
 
         <activity
             android:name=".video.VideoActivity"
@@ -35,6 +32,9 @@
 
         <activity
             android:name=".shorts.ShortActivity"
+            android:exported="false" />
+        <activity
+            android:name=".search.Search"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
