@@ -46,6 +46,7 @@ public class Search extends AppCompatActivity {
                                 ModelClass modelClass = new ModelClass();
                                 modelClass.setSearchName(document.getString("name"));
                                 modelClass.setImg(document.getString("resourceImage"));
+                                modelClass.setVideo(document.getString("resourceVideo"));
                                 arrayList.add(modelClass);
                                 SearchAdapter searchAdapter=new SearchAdapter(Search.this,arrayList);
                                 recyclerView.setAdapter(searchAdapter);
@@ -69,6 +70,7 @@ public class Search extends AppCompatActivity {
                             ModelClass modelClass=new ModelClass();
                             modelClass.setSearchName(arrayList.get(i).getSearchName());
                             modelClass.setImg(arrayList.get(i).getImg());
+                            modelClass.setVideo(arrayList.get(i).getVideo());
                             searchList.add(modelClass);
                         }
                     }
@@ -95,6 +97,9 @@ public class Search extends AppCompatActivity {
                             ModelClass modelClass=new ModelClass();
                             modelClass.setSearchName(arrayList.get(i).getSearchName());
                             modelClass.setImg(arrayList.get(i).getImg());
+                            modelClass.setVideo(arrayList.get(i).getVideo());
+
+
                             searchList.add(modelClass);
                         }
                     }

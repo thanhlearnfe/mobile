@@ -3,6 +3,15 @@ package com.example.myapplication.search;
 public class ModelClass {
     String searchName;
     String img;
+    String video;
+
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
+    }
 
     public String getSearchName() {
         return searchName;
