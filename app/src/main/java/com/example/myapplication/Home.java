@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.filmlist.Film;
+import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
 import com.example.myapplication.search.Search;
 import com.example.myapplication.video.VideoActivity;
