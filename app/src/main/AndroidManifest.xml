@@ -22,7 +22,6 @@
         <activity
             android:name=".Home"
             android:exported="false" />
-
         <activity
             android:name=".login.RegisterActivity"
             android:exported="false" />
@@ -31,6 +30,9 @@
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".login.GoogleSiginActivity"
             android:exported="false"/>
         <activity
             android:name=".shorts.ShortActivity"

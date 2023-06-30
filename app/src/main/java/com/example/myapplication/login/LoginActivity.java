@@ -28,7 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class LoginActivity extends AppCompatActivity {
     ImageView btnGoogle;
     TextView createnewAccount;
-    private Button btnLogin,btnSignup,login;
+    private Button btnLogin, btnSignup, login;
     private UserList userList;
     public static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_1);
-        createnewAccount=findViewById(R.id.createNewAccount);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        createnewAccount = findViewById(R.id.createNewAccount);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         createnewAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +61,8 @@ public class LoginActivity extends AppCompatActivity {
         loginvalue = findViewById(R.id.email);
         passw = findViewById(R.id.password);
         btnLogin=(Button)findViewById(R.id.login);
-
-
+//
+//
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
     }
-    }
+}
 
