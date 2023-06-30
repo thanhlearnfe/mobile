@@ -39,7 +39,7 @@ public class videoadapter extends FirebaseRecyclerAdapter<videomodel,videoadapte
     class myviewholder extends RecyclerView.ViewHolder
     {
         VideoView videoView;
-        TextView title,desc;
+        TextView title,desc, hearth, cmt;
         ProgressBar pbar;
 
         public myviewholder(@NonNull View itemView)
@@ -49,6 +49,8 @@ public class videoadapter extends FirebaseRecyclerAdapter<videomodel,videoadapte
             videoView=(VideoView)itemView.findViewById(R.id.videoView);
             title=(TextView)itemView.findViewById(R.id.textVideoTitle);
             desc=(TextView)itemView.findViewById(R.id.textVideoDescription);
+            hearth=(TextView)itemView.findViewById(R.id.hearth_n);
+            cmt=(TextView)itemView.findViewById(R.id.cmt_n);
             pbar=(ProgressBar)itemView.findViewById(R.id.videoProgressBar);
         }
 
@@ -57,7 +59,8 @@ public class videoadapter extends FirebaseRecyclerAdapter<videomodel,videoadapte
             videoView.setVideoPath(obj.getUrl());
             title.setText(obj.getTitle());
             desc.setText(obj.getDesc());
-
+            hearth.setText(obj.getHearth());
+            cmt.setText(obj.getCmt());
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mediaPlayer) {
