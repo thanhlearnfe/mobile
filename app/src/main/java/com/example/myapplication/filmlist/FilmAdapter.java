@@ -2,6 +2,7 @@ package com.example.myapplication.filmlist;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.Home;
 import com.example.myapplication.R;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.Love;
 import com.example.myapplication.love.LoveActivity;
 import com.example.myapplication.love.LoveData;
+import com.example.myapplication.video.VideoActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
@@ -69,6 +74,12 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
                 addButtonClick(view,film,film.getName());
             }
         });
+        holder.viewFilm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addViewClick(view,film,film.getResourceVideo(), film.getName());
+            }
+        });
     }
     private void addButtonClick(View view,Film p,String t) {
 
@@ -89,8 +100,22 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
                         }
                     });
         }else {
+            System.out.println(t);
             Toast.makeText(mContext.getApplicationContext(), "Bạn đã thêm phim này vào mục ưu thích!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void addViewClick(View view,Film p,String t,String title) {
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("currentUrl");
+        DatabaseReference myTil = database.getReference("currentTilte");
+        myRef.setValue(t);
+        myTil.setValue(title);
+
+        Intent intent = new Intent(mContext, VideoActivity.class);
+        intent.putExtra("title", title);
+        mContext.startActivity(intent);
     }
     @Override
     public int getItemCount() {
@@ -105,13 +130,15 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ImageViewHolde
         private ImageView imgUser;
         private TextView tvName;
 
-        public ImageView ivAdd;
+        public ImageView ivAdd,viewFilm;
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgUser = itemView.findViewById(R.id.img_user);
             tvName = itemView.findViewById(R.id.tvname);
             this.ivAdd = (ImageView)itemView.findViewById(R.id.addFilm);
+            this.viewFilm = (ImageView)itemView.findViewById(R.id.img_user);
+
         }
     }
 }
