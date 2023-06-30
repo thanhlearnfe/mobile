@@ -53,7 +53,7 @@ public class LoveActivity extends AppCompatActivity {
                         loveData.clear();
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"), document.getString("resourceVideo"));
+                                Film love = new Film(1, document.getString("resourceImage"),document.getString("name"), document.getId());
                                 loveData.add(love);
                             }
                             adapter.setData(loveData);

@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+        btnGoogle = (ImageView) findViewById(R.id.btnGoogle);
+
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
