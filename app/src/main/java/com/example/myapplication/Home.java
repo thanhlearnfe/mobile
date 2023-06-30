@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 import com.example.myapplication.filmlist.Film;
 import com.example.myapplication.filmlist.FilmAdapter;
 import com.example.myapplication.love.LoveActivity;
+import com.example.myapplication.search.Search;
 import com.example.myapplication.video.VideoActivity;
 import com.example.myapplication.shorts.ShortActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -73,7 +73,13 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, Search.class);
+                startActivity(intent);
+            }
+        });
         addFilm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
