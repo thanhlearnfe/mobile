@@ -2,7 +2,7 @@ package com.example.myapplication.search;
 
 public class ModelClass {
     String searchName;
-    int img;
+    String img;
 
     public String getSearchName() {
         return searchName;
@@ -12,11 +12,11 @@ public class ModelClass {
         this.searchName = searchName;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 }

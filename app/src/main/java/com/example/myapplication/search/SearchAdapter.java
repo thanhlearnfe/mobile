@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.filmlist.Film;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,8 +37,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.MyHoder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHoder holder, int position) {
+        ModelClass film = arrayList.get(position);
         holder.searchName.setText(arrayList.get(position).getSearchName());
-        holder.img.setImageResource(arrayList.get(position).getImg());
+        Picasso.get().load(film.getImg()).into(holder.img);
     }
 
     @Override
