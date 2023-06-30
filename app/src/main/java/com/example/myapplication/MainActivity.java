@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.myapplication.user.Login;
+import com.example.myapplication.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     @SuppressLint("WrongViewCast")
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent loginitent = new Intent(MainActivity.this, Login.class);
+                Intent loginitent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity((loginitent));
             }
         });
